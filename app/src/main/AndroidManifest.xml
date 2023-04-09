@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthApp">
         <activity
+            android:name=".TemperaturActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BlutdruckActivity"
+            android:exported="false" />
+        <activity
             android:name=".PulsActivity"
             android:exported="false" />
         <activity
