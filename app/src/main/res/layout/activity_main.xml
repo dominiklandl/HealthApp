@@ -9,8 +9,9 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="406dp"
         android:layout_height="383dp"
-        tools:layout_editor_absoluteX="2dp"
-        tools:layout_editor_absoluteY="174dp">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="2dp">
 
         <Button
             android:id="@+id/pulsButton"
