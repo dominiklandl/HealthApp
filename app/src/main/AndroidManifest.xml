@@ -11,16 +11,20 @@
         android:theme="@style/Theme.HealthApp">
         <activity
             android:name=".TemperaturActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Temperatur"/>
         <activity
             android:name=".BlutdruckActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Blutdruck"/>
         <activity
             android:name=".PulsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Puls + SpO2"/>
         <activity
             android:name=".SettingsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Settings"/>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
