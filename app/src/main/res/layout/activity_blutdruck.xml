@@ -7,29 +7,29 @@
     tools:context=".BlutdruckActivity">
 
     <EditText
-        android:id="@+id/editTextBlutdrucks"
+        android:id="@+id/Blutdrucks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="101dp"
         android:layout_marginTop="144dp"
         android:layout_marginEnd="100dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="text"
         android:minHeight="48dp"
-        android:text="@string/systolischer_druck"
+        android:hint="e.g. 120"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/editTextBlutdruckd"
+        android:id="@+id/Blutdruckd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="270dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="text"
         android:minHeight="48dp"
-        android:text="@string/diastolischer_druck"
+        android:hint="e.g. 80"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -44,6 +44,33 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:onClick="updateText"/>
+
+    <TextView
+        android:id="@+id/Textfieldblutdrucks"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Geben Sie hier Ihren systolischen Blutdruck ein"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.137"
+        android:textSize="15sp"/>
+
+    <TextView
+        android:id="@+id/Textfieldblutdruckd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Geben Sie hier Ihren diastolischer Blutdruck ein"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.389" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
