@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -14,6 +15,8 @@ public class BlutdruckActivity extends AppCompatActivity {
     EditText Blutdruckd;
     TextView Textfieldblutdrucks;
     TextView Textfieldblutdruckd;
+
+    Button button;
 
 
     @Override
@@ -27,7 +30,15 @@ public class BlutdruckActivity extends AppCompatActivity {
     }
 
     public void updateText(View view){
+        button = (Button) findViewById(R.id.button);
+        button.setText("erneut Bestätigen");
+        if (Blutdrucks.getText().toString().isEmpty())
+            Textfieldblutdrucks.setText("Ungülige Eingabe, geben Sie einen Wert ein");
+        else
       Textfieldblutdrucks.setText("Ihr systolischer Blutdruck beträgt "+Blutdrucks.getText());
+        if (Blutdruckd.getText().toString().isEmpty())
+            Textfieldblutdruckd.setText("Ungülige Eingabe, geben Sie einen Wert ein");
+        else
       Textfieldblutdruckd.setText("Ihr diastolischer Blutdruck beträgt "+Blutdruckd.getText());
 
     }
