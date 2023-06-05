@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.util.Log;
@@ -58,19 +59,31 @@ public class HomeFragment extends Fragment {
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-
-
         }
-
-
-
     }
+
+
+    private CalendarView mCalendarView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+
+
+        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        mCalendarView = (CalendarView) view.findViewById(R.id.calendarView);
+        mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+                String date =  year + "/" + (month+1) + "/" + dayOfMonth;
+                Log.wtf("wtf","onSelectedDayChange" + date);
+                Intent intent = new Intent(getActivity(), DateClickedActivity.class);
+                intent.putExtra("date", date);
+                startActivity(intent);
+            }
+        });
+
+        return view;
     }
 
 }

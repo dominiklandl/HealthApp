@@ -1,5 +1,6 @@
 package com.healthapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -17,7 +18,6 @@ import com.healthapp.databinding.ActivityMainBinding;
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
-    private CalendarView mCalendarView;
 
 
     @Override
@@ -78,10 +78,4 @@ public class MainActivity extends AppCompatActivity {
         Intent i3 = new Intent(this, TemperaturActivity.class);
         startActivity(i3);
     }
-
-
-
-
-
-
 }
