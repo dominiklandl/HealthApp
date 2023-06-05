@@ -8,13 +8,16 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.CalendarView;
 
 import com.healthapp.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
+    private CalendarView mCalendarView;
 
 
     @Override
@@ -47,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
 
             return true;
         });
+
+
     }
 
     private void replaceFragment(Fragment fragment){
@@ -73,6 +78,10 @@ public class MainActivity extends AppCompatActivity {
         Intent i3 = new Intent(this, TemperaturActivity.class);
         startActivity(i3);
     }
+
+
+
+
 
 
 }
