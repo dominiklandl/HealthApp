@@ -10,26 +10,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.HealthApp">
         <activity
+            android:name=".DateClickedActivity"
+            android:exported="false" />
+        <activity
             android:name=".TemperaturActivity"
             android:exported="false"
-            android:label="Temperatur"
-            />
+            android:label="Temperatur" />
         <activity
             android:name=".BlutdruckActivity"
             android:exported="false"
-            android:label="Blutdruck"/>
+            android:label="Blutdruck" />
         <activity
             android:name=".PulsActivity"
             android:exported="false"
-            android:label="Puls + SpO2"/>
-        <activity android:name=".MainActivity"
+            android:label="Puls + SpO2" />
+        <activity
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-
-
             </intent-filter>
         </activity>
     </application>

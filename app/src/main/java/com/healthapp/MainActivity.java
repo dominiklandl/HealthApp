@@ -1,5 +1,6 @@
 package com.healthapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -8,7 +9,9 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.CalendarView;
 
 import com.healthapp.databinding.ActivityMainBinding;
 
@@ -47,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
 
             return true;
         });
+
+
     }
 
     private void replaceFragment(Fragment fragment){
@@ -73,8 +78,4 @@ public class MainActivity extends AppCompatActivity {
         Intent i3 = new Intent(this, TemperaturActivity.class);
         startActivity(i3);
     }
-
-    //commwnt dor commit
-
-
 }
