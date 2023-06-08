@@ -73,4 +73,17 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.389" />
 
+    <TextView
+        android:id="@+id/Warning"
+        android:layout_width="341dp"
+        android:layout_height="81dp"
+        android:text="!Ihr Blutdruck weicht von den Normwerten ab. Ist dies über mehrere Tage der Fall, wird empfohlen einen Arzt aufzusuchen!"
+        android:textSize="15sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.818" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
