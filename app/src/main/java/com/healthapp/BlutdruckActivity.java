@@ -16,6 +16,7 @@ public class BlutdruckActivity extends AppCompatActivity {
     TextView Textfieldblutdrucks;
     TextView Textfieldblutdruckd;
     TextView Warning;
+    TextView Save;
 
     Button button;
     int bluts;
@@ -31,6 +32,7 @@ public class BlutdruckActivity extends AppCompatActivity {
         Blutdrucks = (EditText) findViewById(R.id.Blutdrucks);
         Blutdruckd = (EditText) findViewById(R.id.Blutdruckd);
         Warning= (TextView) findViewById(R.id.Warning);
+        Save= (TextView) findViewById(R.id.Save);
     }
 
     public void updateText(View view){
@@ -63,6 +65,11 @@ public class BlutdruckActivity extends AppCompatActivity {
             } else
                 Textfieldblutdruckd.setText("Ihr diastolischer Blutdruck beträgt " + Blutdruckd.getText());
         }
+
+        if (bluts < 400 && bluts > 10 && blutd <400 && blutd >10) {
+            Save.setVisibility(View.VISIBLE);
+        }
+        else Save.setVisibility(View.INVISIBLE);
 
     }
 }
