@@ -133,7 +133,9 @@ public class BluetoothLeService extends Service {
     }
 
     public boolean connect(String address) {
+        System.out.println("Connect called");
         if (BTAdapter == null || address == null) {
+            System.out.println("Adapter null");
             return false;
         }
         // Previously connected device.  Try to reconnect.

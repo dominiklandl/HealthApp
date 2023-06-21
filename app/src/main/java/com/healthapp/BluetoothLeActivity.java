@@ -22,6 +22,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -30,6 +31,8 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -126,8 +129,11 @@ public class BluetoothLeActivity extends AppCompatActivity {
         final BluetoothManager bluetoothManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
         mBTAdapter = bluetoothManager.getAdapter();
         mScanner = mBTAdapter.getBluetoothLeScanner();
+
+        System.out.println("Intent call");
         Intent gattServiceIntent = new Intent(this, BluetoothLeService.class);
         bindService(gattServiceIntent, serviceConnection, Context.BIND_AUTO_CREATE);
+        System.out.println("Intent called");
 
         ActivityCompat.requestPermissions(
                 this,
@@ -138,7 +144,6 @@ public class BluetoothLeActivity extends AppCompatActivity {
                                 android.Manifest.permission.ACCESS_BACKGROUND_LOCATION,
                                 Manifest.permission.READ_EXTERNAL_STORAGE
                         }, 0);
-        checkBt();
 
         if(mBTAdapter==null){
             Log.d(TAG,"Device does not support Bluetooth");
@@ -320,6 +325,7 @@ public class BluetoothLeActivity extends AppCompatActivity {
     private final ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
+            System.out.println("Service connection called");
             bluetoothService = ((BluetoothLeService.LocalBinder) service).getService();
             if (bluetoothService != null) {
                 if(!bluetoothService.initialize()){
@@ -344,14 +350,6 @@ public class BluetoothLeActivity extends AppCompatActivity {
         return intentFilter;
     }
 
-    private void checkBt() {
-        if (mBTAdapter == null || !mBTAdapter.isEnabled()) {
-            Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-            startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
-        }
-        System.out.println("Check BT done");
-    }
-
     private AdapterView.OnItemClickListener mDeviceClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -360,7 +358,7 @@ public class BluetoothLeActivity extends AppCompatActivity {
             stopScan();
             Toast.makeText(getApplicationContext(), "MAC-Adress: "+deviceAddress, Toast.LENGTH_SHORT).show();
             bluetoothService.connect(deviceAddress);
-            Toast.makeText(getApplicationContext(), "Connected", Toast.LENGTH_SHORT).show();
         }
     };
+
 }

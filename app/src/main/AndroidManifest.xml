@@ -38,8 +38,10 @@
             android:label="Puls + SpO2" />
         <activity
             android:name=".BluetoothLeActivity"
+            android:enabled="true"
             android:exported="true"
             android:label="Bluetooth"/>
+        <service android:name="com.healthapp.BluetoothLeService" ></service>
         <activity
             android:name=".MainActivity"
             android:exported="true">
