@@ -40,7 +40,7 @@
                 android:layout_columnWeight="1"
                 android:layout_gravity="fill"
                 android:layout_margin="8dp"
-                android:backgroundTint="#A31B1B"
+                android:backgroundTint="@color/red"
                 android:onClick="launchPuls"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="8dp">

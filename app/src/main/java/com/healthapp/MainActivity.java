@@ -32,17 +32,17 @@ public class MainActivity extends AppCompatActivity {
 
             switch (item.getItemId()){
 
-                case R.id.home:
+                case R.id.home_bottomnav:
                     replaceFragment(new HomeFragment());
                     getSupportActionBar().setTitle("Home");
                     break;
-                case R.id.profile:
+                case R.id.profile_bottomnav:
                     replaceFragment(new ProfileFragment());
                     getSupportActionBar().setTitle("Profile");
                     break;
-                case R.id.settings:
-                    replaceFragment(new SettingsFragment());
-                    getSupportActionBar().setTitle("Settings");
+                case R.id.bluetooth_bottomnav:
+                    replaceFragment(new BluetoothFragment());
+                    getSupportActionBar().setTitle("Bluetooth");
                     break;
 
             }
