@@ -214,7 +214,9 @@ public class BluetoothLeActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        bluetoothService.close();
+        //bluetoothService.close();
+        Intent intent = new Intent (this, MainActivity.class);
+        startActivity(intent);
         unregisterReceiver(gattUpdateReceiver);
         unregisterReceiver(b1receiver);
     }
