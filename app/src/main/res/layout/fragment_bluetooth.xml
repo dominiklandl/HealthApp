@@ -1,14 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".BluetoothFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <Button
+        android:id="@+id/btn_BT_ON"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Make Device discoverable"
+        />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/btn_show_paireddvc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Show Paired Devices"
+        android:layout_below="@id/btn_BT_ON"/>
+
+    <Button
+        android:id="@+id/btn_discover_dvc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Discover new Devices"
+        android:layout_below="@id/btn_show_paireddvc"/>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_height="200dp"
+        android:layout_below="@id/btn_disconnect"
+        android:id="@+id/lv_devicelist"/>
+
+    <Button
+        android:id="@+id/btn_disconnect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Disconnect"
+        android:layout_below="@id/btn_discover_dvc"/>
+
+</RelativeLayout>
