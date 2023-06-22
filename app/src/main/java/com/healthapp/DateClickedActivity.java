@@ -20,6 +20,8 @@ public class DateClickedActivity extends AppCompatActivity {
     private TextView thedate;
     private TextView puls;
     private TextView temp;
+    private TextView syst;
+    private TextView diast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,9 @@ public class DateClickedActivity extends AppCompatActivity {
         thedate = (TextView) findViewById(R.id.date);
         puls = (TextView) findViewById(R.id.tv_pulsdata);
         temp = (TextView) findViewById(R.id.tv_tempdata);
+        syst = (TextView) findViewById(R.id.tv_syst);
+        diast =(TextView) findViewById(R.id.tv_diast);
+
 
         Intent incoming = getIntent();
         String date = incoming.getStringExtra("date");
@@ -40,13 +45,19 @@ public class DateClickedActivity extends AppCompatActivity {
         String[] arrSplit = date.split("/");
         String indexPuls = "puls"+arrSplit[2];
         String indexTemp = "temp"+arrSplit[2];
+        String indexsyst = "bluts"+arrSplit[2];
+        String indexdiast = "blutd"+arrSplit[2];
 
         SharedPreferences shpRead = getSharedPreferences("DataSaveCalender", Context.MODE_PRIVATE);
         int tempValue = shpRead.getInt(indexTemp,0);
         int pulsValue = shpRead.getInt(indexPuls,0);
+        int blutsValue = shpRead.getInt(indexsyst, 0);
+        int blutdValue = shpRead.getInt(indexdiast, 0);
 
-        puls.setText(String.valueOf(pulsValue));
-        temp.setText(String.valueOf(tempValue));
+        puls.setText(String.valueOf(pulsValue)+" bpm");
+        temp.setText(String.valueOf(tempValue)+" °C");
+        syst.setText(String.valueOf(blutsValue)+" mmHg");
+        diast.setText(String.valueOf(blutdValue)+" mmHg");
 
         actionBar.setTitle(date);
     }
