@@ -11,10 +11,42 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/textV"
+            android:id="@+id/profilTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Geben Sie hier Ihren Namen ein und bestätigen sie mit 'Bestätigen'"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:text=""
+            android:textSize="32dp" />
+
+        <TextView
+            android:id="@+id/nameTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_below="@id/profilTV"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="32dp"
+            android:textSize="24dp"/>
+
+        <TextView
+            android:id="@+id/ageTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:layout_below="@id/nameTV"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="32dp"
+            android:textSize="24dp"/>
+
+        <TextView
+            android:id="@+id/aufforderungTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Geben Sie hier Ihren Namen und Ihr Alter ein und bestätigen sie mit 'Bestätigen'"
+            android:textSize="18dp"
             android:layout_above="@+id/usernameInput"
             android:textAlignment="center"/>
 
@@ -27,11 +59,21 @@
             android:hint="Name"
             android:inputType="textPersonName" />
 
+        <EditText
+            android:id="@+id/ageInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/usernameInput"
+            android:layout_centerHorizontal="true"
+            android:hint="Alter"
+            android:ems="10"
+            android:inputType="number" />
+
         <Button
             android:id="@+id/buttonApplyUsername"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/usernameInput"
+            android:layout_below="@id/ageInput"
             android:layout_centerHorizontal="true"
             android:text="Bestätigen" />
 

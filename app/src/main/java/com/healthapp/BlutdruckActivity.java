@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class BlutdruckActivity extends AppCompatActivity {
 
@@ -74,6 +75,7 @@ public class BlutdruckActivity extends AppCompatActivity {
 
         if (bluts < 400 && bluts > 10 && blutd <400 && blutd >10) {
             Save.setVisibility(View.VISIBLE);
+            Toast.makeText(getApplicationContext(),"Saved", Toast.LENGTH_SHORT).show();
         }
         else Save.setVisibility(View.INVISIBLE);
 

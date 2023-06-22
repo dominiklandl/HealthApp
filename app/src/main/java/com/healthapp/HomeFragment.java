@@ -103,7 +103,7 @@ public class HomeFragment extends Fragment {
 
 
         if (shRead.contains("name")){
-            String text1 = "Hallo "+nameShared+"!";
+            String text1 = "Hallo "+ nameShared +"!";
             Spannable spannable = new SpannableString(text1);
             spannable.setSpan(new ForegroundColorSpan(Color.rgb(163, 27, 27)), 6, (6+nameShared.length()), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             textView.setText(spannable, TextView.BufferType.SPANNABLE);
