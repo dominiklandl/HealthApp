@@ -4,6 +4,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.Calendar;
 
 public class BlutdruckActivity extends AppCompatActivity {
 
@@ -75,6 +79,16 @@ public class BlutdruckActivity extends AppCompatActivity {
 
         if (bluts < 400 && bluts > 10 && blutd <400 && blutd >10) {
             Save.setVisibility(View.VISIBLE);
+            SharedPreferences shpData = getSharedPreferences("DataSaveCalender",Context.MODE_PRIVATE);
+            SharedPreferences.Editor dataEdit = shpData.edit();
+            Calendar kalender = Calendar.getInstance();
+            int i = kalender.get(Calendar.DAY_OF_MONTH);
+            String indexs = "bluts"+String.valueOf(i);
+            dataEdit.putInt(indexs,bluts);
+            dataEdit.commit();
+            String indexd = "blutd"+String.valueOf(i);
+            dataEdit.putInt(indexd,blutd);
+            dataEdit.commit();
         }
         else Save.setVisibility(View.INVISIBLE);
 
