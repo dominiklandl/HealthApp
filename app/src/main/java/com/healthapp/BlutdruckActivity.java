@@ -75,7 +75,6 @@ public class BlutdruckActivity extends AppCompatActivity {
 
         if (bluts < 400 && bluts > 10 && blutd <400 && blutd >10) {
             Save.setVisibility(View.VISIBLE);
-            Toast.makeText(getApplicationContext(),"Saved", Toast.LENGTH_SHORT).show();
         }
         else Save.setVisibility(View.INVISIBLE);
 
