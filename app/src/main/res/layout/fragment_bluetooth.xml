@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".BluetoothFragment">
 
-    <!-- TODO: Update blank fragment layout -->
+    <RelativeLayout
+        android:id="@+id/relativeLayoutBluetooth"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <Button
         android:id="@+id/btn_BT_ON"
         android:layout_width="wrap_content"
@@ -45,4 +49,5 @@
         android:text="Disconnect"
         android:layout_below="@id/btn_discover_dvc"/>
 
-</RelativeLayout>
+    </RelativeLayout>
+</FrameLayout>
