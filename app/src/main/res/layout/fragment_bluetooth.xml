@@ -38,7 +38,7 @@
         android:layout_width="match_parent"
         android:layout_centerHorizontal="true"
         android:layout_height="200dp"
-        android:layout_below="@id/btn_disconnect"
+        android:layout_below="@id/btn_getData"
         android:id="@+id/lv_devicelist"/>
 
     <Button
@@ -48,6 +48,14 @@
         android:layout_centerHorizontal="true"
         android:text="Disconnect"
         android:layout_below="@id/btn_discover_dvc"/>
+
+        <Button
+            android:id="@+id/btn_getData"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Get Data"
+            android:layout_below="@id/btn_disconnect"/>
 
     </RelativeLayout>
 </FrameLayout>

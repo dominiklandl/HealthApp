@@ -15,7 +15,8 @@ public class PulsActivity extends AppCompatActivity {
     TextView messwert;
     Button startMessung;
     Button speichern;
-    BluetoothLeService bluetoothLeService;
+    BluetoothLeActivity bluetoothLeActivity;
+    private int puls = 10;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +32,7 @@ public class PulsActivity extends AppCompatActivity {
         startMessung.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                byte[] value = bluetoothLeService.getCharacteristics();
-                int puls = ((int) value[1]);
-                messwert.setText(puls);
+                messwert.setText(String.valueOf(puls));
             }
         });
         speichern.setOnClickListener(new View.OnClickListener() {
@@ -52,5 +51,9 @@ public class PulsActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void setPuls(int puls) {
+        this.puls = puls;
     }
 }

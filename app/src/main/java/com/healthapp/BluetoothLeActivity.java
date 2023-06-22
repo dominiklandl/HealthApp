@@ -59,6 +59,8 @@ public class BluetoothLeActivity extends AppCompatActivity {
     private final static int REQUEST_ENABLE_BT = 1;
 
     private BluetoothLeService bluetoothService = new BluetoothLeService();
+    private PulsActivity pulsActivity = new PulsActivity();
+    private TemperaturActivity tempActivity = new TemperaturActivity();
     private String deviceAddress;
     boolean connected;
 
@@ -66,8 +68,11 @@ public class BluetoothLeActivity extends AppCompatActivity {
     private Button mListPairedDevicesBtn;
     private Button mDiscoverBtn;
     private Button mDisconnect;
+    private Button mGetData;
     private ListView mDevicesListView;
 
+    private int temp;
+    private int puls;
     protected ArrayAdapter<String> mBTArrayAdapter;
     private BluetoothAdapter mBTAdapter = null;
     private BluetoothLeScanner mScanner;
@@ -75,7 +80,6 @@ public class BluetoothLeActivity extends AppCompatActivity {
     private BluetoothFragment bluetoothFragment;
     private ArrayList<ArrayList<BluetoothGattCharacteristic>> GattCharacteristics =
             new ArrayList<ArrayList<BluetoothGattCharacteristic>>();
-
 
     private Handler mHandler = new Handler();
     private boolean scanning;
@@ -88,7 +92,7 @@ public class BluetoothLeActivity extends AppCompatActivity {
             BluetoothDevice device = result.getDevice();
             mBTArrayAdapter.add(device.getName() + "\n" + device.getAddress());
             mBTArrayAdapter.notifyDataSetChanged();
-            stopScan();
+            //stopScan();
         }
 
         @Override
@@ -119,6 +123,7 @@ public class BluetoothLeActivity extends AppCompatActivity {
         mDiscoverBtn = (Button) findViewById(R.id.btn_discover_dvc);
         mDisconnect = (Button) findViewById(R.id.btn_disconnect);
         mDevicesListView = (ListView) findViewById(R.id.lv_devicelist);
+        mGetData = (Button) findViewById(R.id.btn_getData);
 
         System.out.println("onCreate called");
 
@@ -198,6 +203,17 @@ public class BluetoothLeActivity extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Disonnected", Toast.LENGTH_SHORT).show();
                 }
             });
+            mGetData.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    byte[] data = bluetoothService.getCharacteristics();
+                    tempActivity.setTemp(data[0]);
+                    pulsActivity.setPuls(data[1]);
+                    System.out.println("Temp: "+data[0]);
+                    System.out.println("Puls: "+data[1]);
+                    Toast.makeText(getApplicationContext(), "Werte übertragen", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 
@@ -237,6 +253,7 @@ public class BluetoothLeActivity extends AppCompatActivity {
     }
 
     protected void discover(){
+        Toast.makeText(getApplicationContext(),"Start Scan",Toast.LENGTH_SHORT).show();
         ScanFilter filter = new ScanFilter.Builder().setDeviceName(null).build();
         ArrayList<ScanFilter> filters = new ArrayList<ScanFilter>();
         filters.add(filter);
@@ -353,6 +370,7 @@ public class BluetoothLeActivity extends AppCompatActivity {
     private AdapterView.OnItemClickListener mDeviceClickListener = new AdapterView.OnItemClickListener() {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            stopScan();
             String info = ((TextView) view).getText().toString();
             deviceAddress = info.substring(info.length() - 17);
             stopScan();

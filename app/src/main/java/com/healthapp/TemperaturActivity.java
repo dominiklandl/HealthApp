@@ -15,7 +15,8 @@ public class TemperaturActivity extends AppCompatActivity {
     TextView tempertaur;
     Button messungStarten;
     Button messwertSpeichern;
-    BluetoothLeService bluetoothLeService;
+    BluetoothLeActivity bluetoothLeActivity;
+    private int temp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +38,7 @@ public class TemperaturActivity extends AppCompatActivity {
         messungStarten.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                byte[] data = bluetoothLeService.getCharacteristics();
-                int temp = ((int) data[0]);
-                tempertaur.setText(temp);
+                tempertaur.setText(String.valueOf(temp));
             }
         });
     }
@@ -52,5 +51,10 @@ public class TemperaturActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    public void setTemp(int temp) {
+        this.temp = temp;
+        System.out.println("temp set to: "+temp);
     }
 }
