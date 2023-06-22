@@ -49,6 +49,39 @@
         android:textSize ="20dp"
         android:layout_below="@id/puls"/>
 
+    <TextView
+        android:id="@+id/syst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Systolischer Blutdruck: "
+        android:layout_centerHorizontal ="true"
+        android:textSize ="20dp"
+        android:layout_marginTop="390dp"/>
+    <TextView
+        android:id="@+id/tv_syst"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_centerHorizontal ="true"
+        android:textSize ="20dp"
+        android:layout_below="@id/syst"/>
+
+    <TextView
+        android:id="@+id/diast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Diastolischer Blutdruck: "
+        android:layout_centerHorizontal ="true"
+        android:textSize ="20dp"
+        android:layout_marginTop="460dp"/>
+    <TextView
+        android:id="@+id/tv_diast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_centerHorizontal ="true"
+        android:textSize ="20dp"
+        android:layout_below="@id/diast"/>
 
 
 </RelativeLayout>
