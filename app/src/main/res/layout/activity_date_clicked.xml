@@ -15,7 +15,7 @@
         android:text="Date"
         android:textSize ="45dp"
         android:textColor="@color/teal_200"
-        android:layout_marginTop="100dp"/>
+        android:layout_marginTop="50dp"/>
 
     <TextView
         android:id="@+id/temperatur"
@@ -24,7 +24,7 @@
         android:text="Temperatur: "
         android:layout_centerHorizontal ="true"
         android:textSize ="20dp"
-        android:layout_marginTop="200dp"/>
+        android:layout_marginTop="150dp"/>
     <TextView
         android:id="@+id/tv_tempdata"
         android:layout_width="wrap_content"
@@ -40,7 +40,7 @@
         android:text="Puls: "
         android:layout_centerHorizontal ="true"
         android:textSize ="20dp"
-        android:layout_marginTop="270dp"/>
+        android:layout_marginTop="220dp"/>
     <TextView
         android:id="@+id/tv_pulsdata"
         android:layout_width="wrap_content"
@@ -57,7 +57,7 @@
         android:text="Systolischer Blutdruck: "
         android:layout_centerHorizontal ="true"
         android:textSize ="20dp"
-        android:layout_marginTop="420dp"/>
+        android:layout_marginTop="370dp"/>
 
     <TextView
         android:id="@+id/tv_syst"
@@ -75,7 +75,7 @@
         android:text="Diastolischer Blutdruck: "
         android:layout_centerHorizontal ="true"
         android:textSize ="20dp"
-        android:layout_marginTop="490dp"/>
+        android:layout_marginTop="440dp"/>
 
     <TextView
         android:id="@+id/tv_diast"
@@ -103,7 +103,7 @@
         android:text="Sauerstoffsättigung:"
         android:layout_centerHorizontal ="true"
         android:textSize ="20dp"
-        android:layout_marginTop ="350dp"/>
+        android:layout_marginTop ="300dp"/>
 
     <TextView
         android:id="@+id/tv_spo2"
