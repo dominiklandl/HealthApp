@@ -16,6 +16,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -207,8 +208,13 @@ public class BluetoothLeActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     byte[] data = bluetoothService.getCharacteristics();
-                    tempActivity.setTemp(data[0]);
-                    pulsActivity.setPuls(data[1]);
+
+                    SharedPreferences shpData = getSharedPreferences("SensorDataSharePref",Context.MODE_PRIVATE);
+                    SharedPreferences.Editor dataEdit = shpData.edit();
+                    dataEdit.putInt("temp",data[0]);
+                    dataEdit.putInt("puls",data[1]);
+                    dataEdit.commit();
+
                     System.out.println("Temp: "+data[0]);
                     System.out.println("Puls: "+data[1]);
                     Toast.makeText(getApplicationContext(), "Werte übertragen", Toast.LENGTH_SHORT).show();

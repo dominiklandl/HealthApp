@@ -4,11 +4,16 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.Calendar;
 
 public class PulsActivity extends AppCompatActivity {
 
@@ -16,7 +21,7 @@ public class PulsActivity extends AppCompatActivity {
     Button startMessung;
     Button speichern;
     BluetoothLeActivity bluetoothLeActivity;
-    private int puls = 10;
+    private int puls;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,13 +37,24 @@ public class PulsActivity extends AppCompatActivity {
         startMessung.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SharedPreferences shpRead = getSharedPreferences("SensorDataSharePref", Context.MODE_PRIVATE);
+                puls = shpRead.getInt("puls",0);
                 messwert.setText(String.valueOf(puls));
             }
         });
         speichern.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Calendar kalender = Calendar.getInstance();
+                String s = messwert.getText().toString();
+                int p = Integer.valueOf(s);
+                int i = kalender.get(Calendar.DAY_OF_MONTH);
+                SharedPreferences shpData = getSharedPreferences("DataSaveCalender",Context.MODE_PRIVATE);
+                SharedPreferences.Editor dataEdit = shpData.edit();
+                String index = "puls"+String.valueOf(i);
+                dataEdit.putInt(index,p);
+                dataEdit.commit();
+                Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -50,9 +66,5 @@ public class PulsActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    public void setPuls(int puls) {
-        this.puls = puls;
     }
 }
