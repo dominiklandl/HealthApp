@@ -1,17 +1,27 @@
 package com.healthapp;
 
 import android.app.ActionBar;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentResultListener;
 
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -71,6 +81,8 @@ public class HomeFragment extends Fragment {
 
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+
         mCalendarView = (CalendarView) view.findViewById(R.id.calendarView);
         mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -83,7 +95,23 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        TextView textView = view.findViewById(R.id.greetingMessage);
+
+
+        SharedPreferences shRead = getActivity().getSharedPreferences("UserDataSharedPref", Context.MODE_PRIVATE);
+        String nameShared = shRead.getString("name", "");
+
+
+        if (shRead.contains("name")){
+            String text1 = "Hallo "+nameShared+"!";
+            Spannable spannable = new SpannableString(text1);
+            spannable.setSpan(new ForegroundColorSpan(Color.rgb(163, 27, 27)), 6, (6+nameShared.length()), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            textView.setText(spannable, TextView.BufferType.SPANNABLE);
+        }else {
+            textView.setText("Herzlich Wilkommen!");
+        }
+
+
         return view;
     }
-
 }
