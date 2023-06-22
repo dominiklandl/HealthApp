@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -22,7 +23,11 @@ public class DateClickedActivity extends AppCompatActivity {
     private TextView temp;
     private TextView syst;
     private TextView diast;
+<<<<<<< HEAD
     private TextView spo2;
+=======
+    private TextView warning1;
+>>>>>>> 05c007024ce648adc8dbb117b8672ee65881b20a
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,32 +41,108 @@ public class DateClickedActivity extends AppCompatActivity {
         puls = (TextView) findViewById(R.id.tv_pulsdata);
         temp = (TextView) findViewById(R.id.tv_tempdata);
         syst = (TextView) findViewById(R.id.tv_syst);
+<<<<<<< HEAD
         diast =(TextView) findViewById(R.id.tv_diast);
         spo2 = (TextView) findViewById(R.id.tv_spo2);
+=======
+        diast = (TextView) findViewById(R.id.tv_diast);
+        warning1 = (TextView) findViewById(R.id.achtung);
+
+>>>>>>> 05c007024ce648adc8dbb117b8672ee65881b20a
 
         Intent incoming = getIntent();
         String date = incoming.getStringExtra("date");
         thedate.setText(date);
 
         String[] arrSplit = date.split("/");
+<<<<<<< HEAD
         String indexPuls = "puls"+arrSplit[2];
         String indexTemp = "temp"+arrSplit[2];
         String indexsyst = "bluts"+arrSplit[2];
         String indexdiast = "blutd"+arrSplit[2];
         String indexspo2 = "spo2"+arrSplit[2];
+=======
+        String indexPuls = "puls" + arrSplit[2];
+        String indexTemp = "temp" + arrSplit[2];
+        String indexsyst = "bluts" + arrSplit[2];
+        String indexdiast = "blutd" + arrSplit[2];
+>>>>>>> 05c007024ce648adc8dbb117b8672ee65881b20a
 
         SharedPreferences shpRead = getSharedPreferences("DataSaveCalender", Context.MODE_PRIVATE);
-        int tempValue = shpRead.getInt(indexTemp,0);
-        int pulsValue = shpRead.getInt(indexPuls,0);
+        int tempValue = shpRead.getInt(indexTemp, 0);
+        int pulsValue = shpRead.getInt(indexPuls, 0);
         int blutsValue = shpRead.getInt(indexsyst, 0);
         int blutdValue = shpRead.getInt(indexdiast, 0);
         int spo2Value = shpRead.getInt(indexspo2,0);
 
+<<<<<<< HEAD
         puls.setText(String.valueOf(pulsValue)+" bpm");
         temp.setText(String.valueOf(tempValue)+" °C");
         syst.setText(String.valueOf(blutsValue)+" mmHg");
         diast.setText(String.valueOf(blutdValue)+" mmHg");
         spo2.setText(String.valueOf(spo2Value)+ " %");
+=======
+        puls.setText(String.valueOf(pulsValue) + " bpm");
+        temp.setText(String.valueOf(tempValue) + " °C");
+        syst.setText(String.valueOf(blutsValue) + " mmHg");
+        diast.setText(String.valueOf(blutdValue) + " mmHg");
+
+
+        String warnanzeige = "Achtung! Folgende Werte weichen von den Normwerten ab, ist dies über einen längeren Zeitraum der Fall, wird empfohlen einen Arzt aufzusuchen -> ";
+        int a=0;
+        SharedPreferences shRead = getSharedPreferences("UserDataSharedPref", Context.MODE_PRIVATE);
+        String ageShared = shRead.getString("age", "");
+        int alter= Integer.parseInt(ageShared);
+        if(alter<=1) {
+            if (pulsValue < 140 && pulsValue > 120 || pulsValue == 0) {
+                warning1.setVisibility(View.INVISIBLE);
+            } else {
+                warning1.setText(warnanzeige + "Puls ");
+                a = 1;
+            }
+        }else if(alter<=6) {
+            if (pulsValue < 120 && pulsValue > 100 || pulsValue == 0) {
+                warning1.setVisibility(View.INVISIBLE);
+            } else {
+                warning1.setText(warnanzeige + "Puls ");
+                a = 1;
+            }
+        } else if(alter<=18) {
+            if (pulsValue < 100 && pulsValue > 80 || pulsValue == 0) {
+                warning1.setVisibility(View.INVISIBLE);
+            } else {
+                warning1.setText(warnanzeige + "Puls ");
+                a = 1;
+            }
+        } else {
+        if (pulsValue < 80 && pulsValue > 60 || pulsValue == 0) {
+            warning1.setVisibility(View.INVISIBLE);
+        } else {
+            warning1.setText(warnanzeige + "Puls ");
+            a=1;
+        }
+        }
+
+        
+        if (blutsValue > 85 && blutsValue < 140 || blutsValue == 0){
+        }else {
+            warning1.setVisibility(View.VISIBLE);
+            if (a==1) warning1.setText(warning1.getText()+", Blutdruck ");
+            else {
+                warning1.setText(warnanzeige+"Blutdruck ");
+                a=1;
+            }
+        }
+        if (tempValue<37||tempValue==0) {
+        } else {
+            if (a==1) warning1.setText(warning1.getText()+", Temperatur");
+            else {
+                warning1.setVisibility(View.VISIBLE);
+                warning1.setText(warnanzeige+"Temperatur");
+            }
+        }
+
+>>>>>>> 05c007024ce648adc8dbb117b8672ee65881b20a
 
         actionBar.setTitle(date);
     }

@@ -19,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -96,6 +97,8 @@ public class HomeFragment extends Fragment {
         });
 
         TextView textView = view.findViewById(R.id.greetingMessage);
+        TextView profilAnlegen = view.findViewById(R.id.profilAnlegenTV);
+        ImageView pfeilIV = view.findViewById(R.id.downwardArrowIV);
 
 
         SharedPreferences shRead = getActivity().getSharedPreferences("UserDataSharedPref", Context.MODE_PRIVATE);
@@ -103,12 +106,17 @@ public class HomeFragment extends Fragment {
 
 
         if (shRead.contains("name")){
-            String text1 = "Hallo "+nameShared+"!";
+            String text1 = "Hallo "+ nameShared +"!";
             Spannable spannable = new SpannableString(text1);
             spannable.setSpan(new ForegroundColorSpan(Color.rgb(163, 27, 27)), 6, (6+nameShared.length()), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             textView.setText(spannable, TextView.BufferType.SPANNABLE);
+            profilAnlegen.setVisibility(View.INVISIBLE);
+            pfeilIV.setVisibility(View.INVISIBLE);
+
         }else {
             textView.setText("Herzlich Wilkommen!");
+            profilAnlegen.setVisibility(View.VISIBLE);
+            pfeilIV.setVisibility(View.VISIBLE);
         }
 
 

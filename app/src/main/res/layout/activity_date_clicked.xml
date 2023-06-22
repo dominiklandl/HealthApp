@@ -14,7 +14,8 @@
         android:layout_centerHorizontal="true"
         android:text="Date"
         android:textSize ="45dp"
-        android:layout_marginTop="150dp"/>
+        android:textColor="@color/teal_200"
+        android:layout_marginTop="100dp"/>
 
     <TextView
         android:id="@+id/temperatur"
@@ -23,7 +24,7 @@
         android:text="Temperatur: "
         android:layout_centerHorizontal ="true"
         android:textSize ="20dp"
-        android:layout_marginTop="250dp"/>
+        android:layout_marginTop="200dp"/>
     <TextView
         android:id="@+id/tv_tempdata"
         android:layout_width="wrap_content"
@@ -39,7 +40,7 @@
         android:text="Puls: "
         android:layout_centerHorizontal ="true"
         android:textSize ="20dp"
-        android:layout_marginTop="320dp"/>
+        android:layout_marginTop="270dp"/>
     <TextView
         android:id="@+id/tv_pulsdata"
         android:layout_width="wrap_content"
@@ -56,7 +57,11 @@
         android:text="Systolischer Blutdruck: "
         android:layout_centerHorizontal ="true"
         android:textSize ="20dp"
+<<<<<<< HEAD
         android:layout_marginTop="460dp"/>
+=======
+        android:layout_marginTop="340dp"/>
+>>>>>>> 05c007024ce648adc8dbb117b8672ee65881b20a
     <TextView
         android:id="@+id/tv_syst"
         android:layout_width="wrap_content"
@@ -73,7 +78,11 @@
         android:text="Diastolischer Blutdruck: "
         android:layout_centerHorizontal ="true"
         android:textSize ="20dp"
+<<<<<<< HEAD
         android:layout_marginTop="530dp"/>
+=======
+        android:layout_marginTop="410dp"/>
+>>>>>>> 05c007024ce648adc8dbb117b8672ee65881b20a
     <TextView
         android:id="@+id/tv_diast"
         android:layout_width="wrap_content"
@@ -82,6 +91,16 @@
         android:layout_centerHorizontal ="true"
         android:textSize ="20dp"
         android:layout_below="@id/diast"/>
+    <TextView
+        android:id="@+id/achtung"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_centerHorizontal ="true"
+        android:textAlignment="center"
+        android:textSize ="20dp"
+        android:textColor="@color/red_light"
+        android:layout_marginTop="500dp"/>
 
     <TextView
         android:id="@+id/spo2"

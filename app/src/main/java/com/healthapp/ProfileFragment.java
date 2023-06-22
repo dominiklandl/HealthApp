@@ -1,5 +1,6 @@
 package com.healthapp;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,8 +13,11 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -69,19 +73,61 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_profile, container, false);
 
+        setProfile();
+
+
         Button button = view.findViewById(R.id.buttonApplyUsername);
+        InputMethodManager mgr = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 EditText usernameText = view.findViewById(R.id.usernameInput);
+                EditText ageText = view.findViewById(R.id.ageInput);
                 SharedPreferences shWrite = getActivity().getSharedPreferences("UserDataSharedPref", Context.MODE_PRIVATE);
                 SharedPreferences.Editor myEdit = shWrite.edit();
-                myEdit.putString("name", usernameText.getText().toString());
-                myEdit.commit();
+
+                String nameInput =  usernameText.getText().toString();
+                String ageInput = ageText.getText().toString();
+
+                if (nameInput.isEmpty() && ageInput.isEmpty()){
+                    Toast.makeText(getActivity(),"Geben Sie bitte Name und Alter ein!", Toast.LENGTH_SHORT).show();
+                }else if (nameInput.isEmpty()){
+                    Toast.makeText(getActivity(),"Geben Sie bitte Ihren Namen ein!", Toast.LENGTH_SHORT).show();
+                }else if (ageInput.isEmpty()){
+                    Toast.makeText(getActivity(),"Geben Sie bitte Ihr Alter ein", Toast.LENGTH_SHORT).show();
+                }else {
+                    myEdit.putString("name", nameInput);
+                    myEdit.putString("age", ageInput);
+                    myEdit.commit();
+                    usernameText.setText("");
+                    ageText.setText("");
+                }
+                mgr.hideSoftInputFromWindow(ageText.getWindowToken(), 0);
+                setProfile();
             }
         });
 
+
+
+
+
         return view;
+    }
+
+    public void setProfile(){
+        TextView profilView = view.findViewById(R.id.profilTV);
+        TextView nameView = view.findViewById(R.id.nameTV);
+        TextView ageView = view.findViewById(R.id.ageTV);
+
+        SharedPreferences shReadProfile = getActivity().getSharedPreferences("UserDataSharedPref", Context.MODE_PRIVATE);
+        String nameSharedProfile = shReadProfile.getString("name", "");
+        String ageSharedProfile = shReadProfile.getString("age","");
+
+        profilView.setText("Ihre Daten:");
+        nameView.setText("Name: " + nameSharedProfile);
+        ageView.setText("Alter: " + ageSharedProfile);
+
+
     }
 
 }

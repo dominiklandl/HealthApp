@@ -149,6 +149,26 @@
             android:layout_below="@id/gridLayout"
             android:layout_marginTop="32dp" />
 
+        <TextView
+            android:id="@+id/profilAnlegenTV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/calendarView"
+            android:visibility="visible"
+            android:text="Legen Sie bitte ein Profil an"
+            android:textColor="@color/red_light"
+            android:textSize="20dp"/>
+
+        <ImageView
+            android:id="@+id/downwardArrowIV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/arrow_downward_redlight_48px"
+            android:layout_below="@id/profilAnlegenTV"
+            android:layout_centerHorizontal="true"
+            />
+
 
     </RelativeLayout>
 
