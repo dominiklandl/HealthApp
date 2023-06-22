@@ -1,8 +1,11 @@
 package com.healthapp;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -33,6 +36,9 @@ public class BlutdruckActivity extends AppCompatActivity {
         Blutdruckd = (EditText) findViewById(R.id.Blutdruckd);
         Warning= (TextView) findViewById(R.id.Warning);
         Save= (TextView) findViewById(R.id.Save);
+
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
     }
 
     public void updateText(View view){
@@ -71,5 +77,14 @@ public class BlutdruckActivity extends AppCompatActivity {
         }
         else Save.setVisibility(View.INVISIBLE);
 
+    }
+
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
