@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="Gemessener Puls: "
+        android:text="Gemessener Puls [bpm] : "
         android:textSize ="19dp"
         android:layout_marginTop="100dp"/>
 
@@ -25,11 +25,28 @@
         android:textSize="18dp"
         android:layout_marginTop="135dp"
         android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/info_spo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gemessene Sauerstoffsättigung [%] :"
+        android:textSize="18dp"
+        android:layout_marginTop="170dp"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:id="@+id/tv_messwertspo2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="18dp"
+        android:layout_marginTop="205dp"
+        android:layout_centerHorizontal="true"/>
     <Button
         android:id="@+id/btn_startMessung"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Messung starten"
+        android:text="Messwert anzeigen"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="270dp"/>
 

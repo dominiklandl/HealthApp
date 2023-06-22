@@ -18,16 +18,19 @@ import java.util.Calendar;
 public class PulsActivity extends AppCompatActivity {
 
     TextView messwert;
+    TextView messwertspo2;
     Button startMessung;
     Button speichern;
     BluetoothLeActivity bluetoothLeActivity;
     private int puls;
+    private int spo2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_puls);
         messwert = (TextView) findViewById(R.id.tv_messwert);
+        messwertspo2 = (TextView) findViewById(R.id.tv_messwertspo2);
         startMessung = (Button) findViewById(R.id.btn_startMessung);
         speichern = (Button) findViewById(R.id.btn_speichern);
 
@@ -40,19 +43,25 @@ public class PulsActivity extends AppCompatActivity {
                 SharedPreferences shpRead = getSharedPreferences("SensorDataSharePref", Context.MODE_PRIVATE);
                 puls = shpRead.getInt("puls",0);
                 messwert.setText(String.valueOf(puls));
+                spo2 = shpRead.getInt("spo2",0);
+                messwertspo2.setText(String.valueOf(spo2));
             }
         });
         speichern.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Calendar kalender = Calendar.getInstance();
-                String s = messwert.getText().toString();
-                int p = Integer.valueOf(s);
+                String p = messwert.getText().toString();
+                String s = messwertspo2.getText().toString();
+                int p2 = Integer.valueOf(p);
+                int s2 = Integer.valueOf(s);
                 int i = kalender.get(Calendar.DAY_OF_MONTH);
                 SharedPreferences shpData = getSharedPreferences("DataSaveCalender",Context.MODE_PRIVATE);
                 SharedPreferences.Editor dataEdit = shpData.edit();
-                String index = "puls"+String.valueOf(i);
-                dataEdit.putInt(index,p);
+                String indexP = "puls"+String.valueOf(i);
+                String indexS = "spo2"+String.valueOf(i);
+                dataEdit.putInt(indexP,p2);
+                dataEdit.putInt(indexS,s2);
                 dataEdit.commit();
                 Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
             }

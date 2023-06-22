@@ -72,8 +72,8 @@ public class BluetoothLeActivity extends AppCompatActivity {
     private Button mGetData;
     private ListView mDevicesListView;
 
-    private int temp;
-    private int puls;
+    private int value;
+    private int counter = 0;
     protected ArrayAdapter<String> mBTArrayAdapter;
     private BluetoothAdapter mBTAdapter = null;
     private BluetoothLeScanner mScanner;
@@ -207,22 +207,28 @@ public class BluetoothLeActivity extends AppCompatActivity {
             mGetData.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    byte[] data = bluetoothService.getCharacteristics();
-
-                    SharedPreferences shpData = getSharedPreferences("SensorDataSharePref",Context.MODE_PRIVATE);
+                    counter = counter + 1;
+                    System.out.println(counter);
+                    SharedPreferences shpData = getSharedPreferences("SensorDataSharePref", Context.MODE_PRIVATE);
                     SharedPreferences.Editor dataEdit = shpData.edit();
-                    dataEdit.putInt("temp",data[0]);
-                        dataEdit.putInt("puls",data[1]);
-                    dataEdit.commit();
+                    if(counter==1){
+                        byte[] data = bluetoothService.getCharacteristics();
+                        int x = (int)(Math.random() * ((30 - 27) + 1)) + 27;  //Nur um Wert zu generien da BLE nur 1 Wert überträgt
+                        value = data[0]+x;
+                        System.out.println("Value "+value);
+                        Toast.makeText(getApplicationContext(), "Nochmal drücken", Toast.LENGTH_SHORT).show();
+                        dataEdit.putInt("spo2", value);
+                        dataEdit.commit();
 
-                    System.out.println("Temp: "+data[0]);
-                    System.out.println("Puls: "+data[1]);
-                    System.out.println(data[3]);
-                    System.out.println(data[4]);
-                    System.out.println(data[5]);
-                    System.out.println(data[6]);
-                    System.out.println(data[7]);
-                    Toast.makeText(getApplicationContext(), "Werte übertragen", Toast.LENGTH_SHORT).show();
+                    }
+                    else if (counter >= 2) {
+                        byte[] data = bluetoothService.getCharacteristics();
+                        value = data[0];
+                        dataEdit.putInt("puls", value);
+                        dataEdit.commit();
+
+                        Toast.makeText(getApplicationContext(), "Werte übertragen", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
         }
@@ -246,7 +252,6 @@ public class BluetoothLeActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        //bluetoothService.close();
         Intent intent = new Intent (this, MainActivity.class);
         startActivity(intent);
         unregisterReceiver(gattUpdateReceiver);
