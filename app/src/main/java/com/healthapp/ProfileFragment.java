@@ -97,13 +97,32 @@ public class ProfileFragment extends Fragment {
                     Toast.makeText(getActivity(),"Geben Sie bitte Ihr Alter ein", Toast.LENGTH_SHORT).show();
                 }else {
                     myEdit.putString("name", nameInput);
-                    myEdit.putString("age", ageInput);
+                    myEdit.putInt("age", Integer.parseInt(ageInput));
                     myEdit.commit();
                     usernameText.setText("");
                     ageText.setText("");
                 }
                 mgr.hideSoftInputFromWindow(ageText.getWindowToken(), 0);
                 setProfile();
+            }
+        });
+
+
+        Button buttonDelete = view.findViewById(R.id.buttonDeletePref);
+        Button buttonApplyDelete = view.findViewById(R.id.buttonApplyDeletePrefs);
+        buttonDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            buttonApplyDelete.setVisibility(View.VISIBLE);
+            }
+        });
+
+        buttonApplyDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deletePreferences();
+                setProfile();
+                buttonApplyDelete.setVisibility(View.INVISIBLE);
             }
         });
 
@@ -121,12 +140,30 @@ public class ProfileFragment extends Fragment {
 
         SharedPreferences shReadProfile = getActivity().getSharedPreferences("UserDataSharedPref", Context.MODE_PRIVATE);
         String nameSharedProfile = shReadProfile.getString("name", "");
-        String ageSharedProfile = shReadProfile.getString("age","");
+        int ageSharedProfile = shReadProfile.getInt("age", 0);
 
         profilView.setText("Ihre Daten:");
-        nameView.setText("Name: " + nameSharedProfile);
-        ageView.setText("Alter: " + ageSharedProfile);
+        if (ageSharedProfile == 0){
+        nameView.setText("Name: ");
+        ageView.setText("Alter: " );
+        }else {
+            nameView.setText("Name: " + nameSharedProfile);
+            ageView.setText("Alter: " + ageSharedProfile);
+        }
 
+
+
+    }
+
+    public void deletePreferences(){
+        SharedPreferences prefUser = getActivity().getSharedPreferences("UserDataSharedPref", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editorUser = prefUser.edit();
+        editorUser.remove("name").apply();
+        editorUser.remove("age").apply();
+
+        SharedPreferences prefData = getContext().getSharedPreferences("DataSaveCalender",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editorData = prefData.edit();
+        editorData.clear().apply();
 
     }
 

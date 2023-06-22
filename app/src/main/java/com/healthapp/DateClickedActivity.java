@@ -66,8 +66,8 @@ public class DateClickedActivity extends AppCompatActivity {
         String warnanzeige = "Achtung! Folgende Werte weichen von den Normwerten ab, ist dies über einen längeren Zeitraum der Fall, wird empfohlen einen Arzt aufzusuchen -> ";
         int a=0;
         SharedPreferences shRead = getSharedPreferences("UserDataSharedPref", Context.MODE_PRIVATE);
-        String ageShared = shRead.getString("age", "");
-        int alter= Integer.parseInt(ageShared);
+        int ageShared = shRead.getInt("age", 0);
+        int alter= ageShared;
         if(alter<=1) {
             if (pulsValue < 140 && pulsValue > 120 || pulsValue == 0) {
                 warning1.setVisibility(View.INVISIBLE);
