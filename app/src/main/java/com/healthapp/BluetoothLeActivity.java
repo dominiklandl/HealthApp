@@ -212,11 +212,16 @@ public class BluetoothLeActivity extends AppCompatActivity {
                     SharedPreferences shpData = getSharedPreferences("SensorDataSharePref",Context.MODE_PRIVATE);
                     SharedPreferences.Editor dataEdit = shpData.edit();
                     dataEdit.putInt("temp",data[0]);
-                    dataEdit.putInt("puls",data[1]);
+                        dataEdit.putInt("puls",data[1]);
                     dataEdit.commit();
 
                     System.out.println("Temp: "+data[0]);
                     System.out.println("Puls: "+data[1]);
+                    System.out.println(data[3]);
+                    System.out.println(data[4]);
+                    System.out.println(data[5]);
+                    System.out.println(data[6]);
+                    System.out.println(data[7]);
                     Toast.makeText(getApplicationContext(), "Werte übertragen", Toast.LENGTH_SHORT).show();
                 }
             });

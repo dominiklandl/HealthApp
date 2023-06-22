@@ -98,9 +98,10 @@ public class BluetoothLeService extends Service {
 
         @Override
         public void onCharacteristicRead(BluetoothGatt gatt, BluetoothGattCharacteristic characteristic, int status) {
+            System.out.println("characteristics received");
             super.onCharacteristicRead(gatt, characteristic, status);
             charValue = characteristic.getValue();
-            System.out.println("Characeristics: "+charValue);
+            System.out.println("Characeristics: "+charValue+charValue[0]);
         }
 
         @Override
