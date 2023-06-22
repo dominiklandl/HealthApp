@@ -69,7 +69,7 @@ public class DateClickedActivity extends AppCompatActivity {
         spo2.setText(String.valueOf(spo2Value)+ " %");
 
 
-        String warnanzeige = "Achtung! Folgende Werte weichen von den Normwerten ab, ist dies über einen längeren Zeitraum der Fall, wird empfohlen einen Arzt aufzusuchen -> ";
+        String warnanzeige = "Achtung! Folgende Werte weichen von den Normwerten ab. Ist dies über einen längeren Zeitraum der Fall, wird empfohlen einen Arzt aufzusuchen -> ";
         int a=0;
         SharedPreferences shRead = getSharedPreferences("UserDataSharedPref", Context.MODE_PRIVATE);
         int ageShared = shRead.getInt("age", 0);

@@ -147,8 +147,8 @@ public class ProfileFragment extends Fragment {
         nameView.setText("Name: ");
         ageView.setText("Alter: " );
         }else {
-            nameView.setText("Name: " + nameSharedProfile);
-            ageView.setText("Alter: " + ageSharedProfile);
+            nameView.setText("Name:  " + nameSharedProfile);
+            ageView.setText("Alter:  " + ageSharedProfile);
         }
 
 
