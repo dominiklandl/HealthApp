@@ -82,6 +82,14 @@
         android:layout_centerHorizontal ="true"
         android:textSize ="20dp"
         android:layout_below="@id/diast"/>
+    <TextView
+        android:id="@+id/achtung"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:layout_centerHorizontal ="true"
+        android:textSize ="20dp"
+        android:layout_marginTop="530dp"/>
 
 
 </RelativeLayout>
