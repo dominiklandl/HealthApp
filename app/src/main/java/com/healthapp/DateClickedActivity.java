@@ -23,11 +23,8 @@ public class DateClickedActivity extends AppCompatActivity {
     private TextView temp;
     private TextView syst;
     private TextView diast;
-<<<<<<< HEAD
     private TextView spo2;
-=======
     private TextView warning1;
->>>>>>> 05c007024ce648adc8dbb117b8672ee65881b20a
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,32 +38,22 @@ public class DateClickedActivity extends AppCompatActivity {
         puls = (TextView) findViewById(R.id.tv_pulsdata);
         temp = (TextView) findViewById(R.id.tv_tempdata);
         syst = (TextView) findViewById(R.id.tv_syst);
-<<<<<<< HEAD
         diast =(TextView) findViewById(R.id.tv_diast);
         spo2 = (TextView) findViewById(R.id.tv_spo2);
-=======
         diast = (TextView) findViewById(R.id.tv_diast);
         warning1 = (TextView) findViewById(R.id.achtung);
 
->>>>>>> 05c007024ce648adc8dbb117b8672ee65881b20a
 
         Intent incoming = getIntent();
         String date = incoming.getStringExtra("date");
         thedate.setText(date);
 
         String[] arrSplit = date.split("/");
-<<<<<<< HEAD
         String indexPuls = "puls"+arrSplit[2];
         String indexTemp = "temp"+arrSplit[2];
         String indexsyst = "bluts"+arrSplit[2];
         String indexdiast = "blutd"+arrSplit[2];
         String indexspo2 = "spo2"+arrSplit[2];
-=======
-        String indexPuls = "puls" + arrSplit[2];
-        String indexTemp = "temp" + arrSplit[2];
-        String indexsyst = "bluts" + arrSplit[2];
-        String indexdiast = "blutd" + arrSplit[2];
->>>>>>> 05c007024ce648adc8dbb117b8672ee65881b20a
 
         SharedPreferences shpRead = getSharedPreferences("DataSaveCalender", Context.MODE_PRIVATE);
         int tempValue = shpRead.getInt(indexTemp, 0);
@@ -75,17 +62,11 @@ public class DateClickedActivity extends AppCompatActivity {
         int blutdValue = shpRead.getInt(indexdiast, 0);
         int spo2Value = shpRead.getInt(indexspo2,0);
 
-<<<<<<< HEAD
         puls.setText(String.valueOf(pulsValue)+" bpm");
         temp.setText(String.valueOf(tempValue)+" °C");
         syst.setText(String.valueOf(blutsValue)+" mmHg");
         diast.setText(String.valueOf(blutdValue)+" mmHg");
         spo2.setText(String.valueOf(spo2Value)+ " %");
-=======
-        puls.setText(String.valueOf(pulsValue) + " bpm");
-        temp.setText(String.valueOf(tempValue) + " °C");
-        syst.setText(String.valueOf(blutsValue) + " mmHg");
-        diast.setText(String.valueOf(blutdValue) + " mmHg");
 
 
         String warnanzeige = "Achtung! Folgende Werte weichen von den Normwerten ab, ist dies über einen längeren Zeitraum der Fall, wird empfohlen einen Arzt aufzusuchen -> ";
@@ -141,8 +122,6 @@ public class DateClickedActivity extends AppCompatActivity {
                 warning1.setText(warnanzeige+"Temperatur");
             }
         }
-
->>>>>>> 05c007024ce648adc8dbb117b8672ee65881b20a
 
         actionBar.setTitle(date);
     }
