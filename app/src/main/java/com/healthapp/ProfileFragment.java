@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -76,6 +77,7 @@ public class ProfileFragment extends Fragment {
 
 
         Button button = view.findViewById(R.id.buttonApplyUsername);
+        InputMethodManager mgr = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,8 +99,10 @@ public class ProfileFragment extends Fragment {
                     myEdit.putString("name", nameInput);
                     myEdit.putString("age", ageInput);
                     myEdit.commit();
+                    usernameText.setText("");
+                    ageText.setText("");
                 }
-
+                mgr.hideSoftInputFromWindow(ageText.getWindowToken(), 0);
                 setProfile();
             }
         });
@@ -119,7 +123,7 @@ public class ProfileFragment extends Fragment {
         String nameSharedProfile = shReadProfile.getString("name", "");
         String ageSharedProfile = shReadProfile.getString("age","");
 
-        profilView.setText("Profil:");
+        profilView.setText("Ihre Daten:");
         nameView.setText("Name: " + nameSharedProfile);
         ageView.setText("Alter: " + ageSharedProfile);
 

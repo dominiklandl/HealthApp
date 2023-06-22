@@ -14,9 +14,9 @@
             android:id="@+id/profilTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="80dp"
+            android:layout_below="@id/buttonApplyUsername"
             android:text=""
             android:textSize="32dp" />
 
@@ -46,8 +46,8 @@
             android:layout_height="wrap_content"
             android:text="Geben Sie hier Ihren Namen und Ihr Alter ein und bestätigen sie mit 'Bestätigen'"
             android:textSize="18dp"
-            android:layout_below="@id/ageTV"
-            android:layout_marginTop="32dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="80dp"
             android:textAlignment="center"/>
 
         <EditText
@@ -68,7 +68,8 @@
             android:layout_centerHorizontal="true"
             android:hint="Alter"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:imeOptions="actionDone"/>
 
         <Button
             android:id="@+id/buttonApplyUsername"

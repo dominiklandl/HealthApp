@@ -63,11 +63,11 @@ public class DateClickedActivity extends AppCompatActivity {
         diast.setText(String.valueOf(blutdValue) + " mmHg");
 
 
-        String warnanzeige = "Achtung folgende Werte weichen von den Normwerten ab, ist dies über einen längeren Zeitraum der Fall, wird empfohlen einen Arzt aufzusuchen. -> ";
+        String warnanzeige = "Achtung! Folgende Werte weichen von den Normwerten ab, ist dies über einen längeren Zeitraum der Fall, wird empfohlen einen Arzt aufzusuchen -> ";
         int a=0;
         SharedPreferences shRead = getSharedPreferences("UserDataSharedPref", Context.MODE_PRIVATE);
-        String nameShared = shRead.getString("age", "");
-        int alter= Integer.parseInt(nameShared);
+        String ageShared = shRead.getString("age", "");
+        int alter= Integer.parseInt(ageShared);
         if(alter<=1) {
             if (pulsValue < 140 && pulsValue > 120 || pulsValue == 0) {
                 warning1.setVisibility(View.INVISIBLE);
@@ -102,7 +102,7 @@ public class DateClickedActivity extends AppCompatActivity {
         if (blutsValue > 85 && blutsValue < 140 || blutsValue == 0){
         }else {
             warning1.setVisibility(View.VISIBLE);
-            if (a==1) warning1.setText(warning1.getText()+"Blutdruck ");
+            if (a==1) warning1.setText(warning1.getText()+", Blutdruck ");
             else {
                 warning1.setText(warnanzeige+"Blutdruck ");
                 a=1;
@@ -110,7 +110,7 @@ public class DateClickedActivity extends AppCompatActivity {
         }
         if (tempValue<37||tempValue==0) {
         } else {
-            if (a==1) warning1.setText(warning1.getText()+"Temperatur");
+            if (a==1) warning1.setText(warning1.getText()+", Temperatur");
             else {
                 warning1.setVisibility(View.VISIBLE);
                 warning1.setText(warnanzeige+"Temperatur");
