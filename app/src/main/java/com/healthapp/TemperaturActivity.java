@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,17 +18,15 @@ import java.util.Calendar;
 
 public class TemperaturActivity extends AppCompatActivity {
 
-    TextView tempertaur;
-    Button messungStarten;
     Button messwertSpeichern;
+    EditText tempertaur;
     BluetoothLeActivity bluetoothLeActivity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_temperatur);
-        tempertaur = (TextView) findViewById(R.id.tv_temperatur);
-        messungStarten = (Button) findViewById(R.id.btn_Messwert);
+        tempertaur = (EditText) findViewById(R.id.et_temperatur);
         messwertSpeichern = (Button) findViewById(R.id.btn_saveData);
 
         ActionBar actionBar = getSupportActionBar();
@@ -46,14 +45,6 @@ public class TemperaturActivity extends AppCompatActivity {
                 dataEdit.putInt(index,t);
                 dataEdit.commit();
                 Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
-            }
-        });
-        messungStarten.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                SharedPreferences shpRead = getSharedPreferences("SensorDataSharePref", Context.MODE_PRIVATE);
-                int temp = shpRead.getInt("temp",0);
-                tempertaur.setText(String.valueOf(temp));
             }
         });
     }
