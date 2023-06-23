@@ -165,6 +165,10 @@ public class ProfileFragment extends Fragment {
         SharedPreferences.Editor editorData = prefData.edit();
         editorData.clear().apply();
 
+        SharedPreferences prefSensor = getContext().getSharedPreferences("SensorDataSharePref",Context.MODE_PRIVATE);
+        SharedPreferences.Editor editorSensor = prefSensor.edit();
+        editorSensor.clear().apply();
+
     }
 
 }

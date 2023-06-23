@@ -57,7 +57,6 @@ public class BluetoothLeActivity extends AppCompatActivity {
 
     private final String TAG = MainActivity.class.getSimpleName();
     private static final long SCAN_PERIOD = 10000;
-    private final static int REQUEST_ENABLE_BT = 1;
 
     private BluetoothLeService bluetoothService = new BluetoothLeService();
     private PulsActivity pulsActivity = new PulsActivity();
@@ -136,6 +135,9 @@ public class BluetoothLeActivity extends AppCompatActivity {
         mBTAdapter = bluetoothManager.getAdapter();
         mScanner = mBTAdapter.getBluetoothLeScanner();
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
         System.out.println("Intent call");
         Intent gattServiceIntent = new Intent(this, BluetoothLeService.class);
         bindService(gattServiceIntent, serviceConnection, Context.BIND_AUTO_CREATE);
@@ -213,7 +215,7 @@ public class BluetoothLeActivity extends AppCompatActivity {
                     SharedPreferences.Editor dataEdit = shpData.edit();
                     if(counter==1){
                         byte[] data = bluetoothService.getCharacteristics();
-                        int x = (int)(Math.random() * ((30 - 27) + 1)) + 27;  //Nur um Wert zu generien da BLE nur 1 Wert überträgt
+                        int x = (int)(Math.random() * ((29 - 27) + 1)) + 26;  //Nur um Wert zu generien da BLE nur 1 Wert überträgt
                         value = data[0]+x;
                         System.out.println("Value "+value);
                         Toast.makeText(getApplicationContext(), "Nochmal drücken", Toast.LENGTH_SHORT).show();
@@ -394,5 +396,12 @@ public class BluetoothLeActivity extends AppCompatActivity {
             bluetoothService.connect(deviceAddress);
         }
     };
-
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 }
